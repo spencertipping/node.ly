@@ -7,9 +7,35 @@
   <script src='/client/reportgrid-core.js'></script>
 
   <style>
+    body  {font-family: sans-serif; background: #cdf; margin-left: auto; margin-right: auto; width: 600px}
+    h1    {color: #248}
+    input {font-size: 16pt; border: solid 1px #abd; background: transparent}
+    input:focus {background: white}
+
+    a {text-decoration: none; color: #248}
+    a:hover {color: black}
+
+    #newurl {margin-top: 10px; font-size: 16pt}
   </style>
+
+  <script>
+    jQuery(function ($) {
+      $('#shorten').click(function () {
+        $.get('/shorten/' + $('#url').val(), function (shortened) {
+          var short_url = document.location.href + shortened;
+          $('#newurl').empty().append($('<a>').attr({href: short_url, target: '_blank'}).text(short_url));
+        });
+      });
+    });
+  </script>
   </head>
 
   <body>
+    <h1>node.ly</h1>
+
+    <input id='url'></input>
+    <a id='shorten' href='javascript:void(0)'>Shorten</a>
+
+    <div id='newurl'></div>
   </body>
 </html>

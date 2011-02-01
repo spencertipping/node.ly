@@ -1,1 +1,0 @@
-../../reportgrid-js/reportgrid-core.js
